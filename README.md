@@ -18,6 +18,15 @@
 * Enter Username and Password
 * You will be redirected to login page
 
+###You could use predefined users to skip registration/login steps
+   ```
+   username1: admin1
+   password1: admin1
+   ```
+   ```
+   username2: admin2
+   password2: admin2
+   ```
 2. Go to http://localhost:8080/login
 * After Login you may be redirected to /.js files(known bug only on macos system)
 3. Player 1 should create Game Room http://localhost:8080/game-room

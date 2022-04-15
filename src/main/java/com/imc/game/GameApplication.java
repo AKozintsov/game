@@ -3,8 +3,6 @@ package com.imc.game;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.annotation.PostConstruct;
-
 @SpringBootApplication
 public class GameApplication {
 

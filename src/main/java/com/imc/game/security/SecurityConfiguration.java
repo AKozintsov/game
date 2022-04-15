@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .and()
                 .formLogin()
                 .permitAll()
-                .defaultSuccessUrl("/game-room")
+                .defaultSuccessUrl("/")
                     .and()
                 .logout()
                     .permitAll();

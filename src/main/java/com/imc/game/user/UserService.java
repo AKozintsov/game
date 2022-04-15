@@ -3,6 +3,8 @@ package com.imc.game.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -21,6 +23,19 @@ public class UserService {
 
     public boolean isExistsByUsername(String username) {
         return userRepository.existsByUsername(username);
+    }
+
+    @PostConstruct
+    void initUsers() {
+        userRepository.save(userMapper.toUser(UserModel.builder()
+                .username("admin1")
+                .password("admin1")
+                .build()));
+
+        userRepository.save(userMapper.toUser(UserModel.builder()
+                .username("admin2")
+                .password("admin2")
+                .build()));
     }
 
 }
