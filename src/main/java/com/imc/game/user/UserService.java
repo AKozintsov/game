@@ -27,15 +27,15 @@ public class UserService {
 
     @PostConstruct
     void initUsers() {
-        userRepository.save(userMapper.toUser(UserModel.builder()
-                .username("admin1")
-                .password("admin1")
-                .build()));
-
-        userRepository.save(userMapper.toUser(UserModel.builder()
-                .username("admin2")
-                .password("admin2")
-                .build()));
+        initUser("admin1", "admin1");
+        initUser("admin2", "admin2");
     }
 
+    private void initUser(String username, String password) {
+        if (!isExistsByUsername(username))
+            userRepository.save(userMapper.toUser(UserModel.builder()
+                    .username(username)
+                    .password(password)
+                    .build()));
+    }
 }

@@ -1,14 +1,14 @@
 version: '3'
 services:
-  java_service:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - 8080:8080
-    depends_on:
-      - database
+#  java_service:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    restart: always
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - database
   database:
     image: "postgres" # use latest official postgres version
     env_file:
