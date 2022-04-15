@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="fragments/sidebar :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <th:block th:replace="fragments/topbar :: topbar"></th:block>
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <!-- Content Row -->
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                         src="img/RSP_image.png" alt="...">
+                                </div>
+                                <p>A simultaneous, zero-sum game, it has only two possible outcomes: a draw, or a win for one player and a loss for the other.
+                                    A player who decides to play rock will beat another player who has chosen scissors
+                                    ("rock crushes scissors" or sometimes "blunts scissors"[4]), but will lose to one who has played paper ("paper covers rock");
+                                    a play of paper will lose to a play of scissors ("scissors cuts paper"). If both players choose the same shape, the game is tied
+                                    and is usually immediately replayed to break the tie. The type of game originated in China and spread with increased contact with East Asia,
+                                    while developing different variants in signs over time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </div>
+</div>
+<th:block th:include="fragments/script :: include"></th:block>
+</body>
+</html>

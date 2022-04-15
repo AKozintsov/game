@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="fragments/sidebar :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <h1 class="h3 mb-0 text-gray-800"></h1>
+                </div>
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                </ul>
+            </nav>
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <!-- Content Row -->
+                <div class="row">
+                    <div class="col-lg-2 mb-4">
+                        <form method="POST" th:object="${userModel}" th:action="@{/registration}" id="registerForm">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">User Name</label>
+                                <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+                            </div>
+                            <input class="btn btn-primary" type="submit" value="Register">
+                            <div th:if="${#fields.hasAnyErrors()}">
+                                <ul>
+                                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </div>
+</div>
+<th:block th:include="fragments/script :: include"></th:block>
+</body>
+</html>

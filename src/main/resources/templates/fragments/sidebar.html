@@ -1,0 +1,76 @@
+FROM openjdk:11.0.5-stretch
+
+# Volume
+VOLUME /tmp
+
+# Copy solr folder
+COPY solr solr
+
+# Evironment variables
+ENV APP_ENV=local
+ENV APP_NAME=promo-admin
+ENV NEWRELIC_ENV=local
+ENV NRA_VERSION=5.1.0
+ENV NRA_LICENCE=none
+ENV NRA_APP="$APP_NAME-($APP_ENV)"
+
+# New relic agent install
+RUN curl -SL https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-java/$NRA_VERSION/newrelic-java-$NRA_VERSION.zip -o /tmp/nr.zip \
+             && unzip /tmp/nr.zip -d /opt/ \
+             && rm /tmp/nr.zip
+
+RUN mkdir -p /opt/newrelic/logs && \
+    chmod 777 /opt/newrelic/logs
+
+ADD /target/*.jar app.jar
+
+VOLUME /tmp
+
+EXPOSE 8085
+
+ENTRYPOINT java -Djava.security.egd=file:/dev/./urandom \
+                -Dspring.profiles.active=${APP_ENV} \
+                -Dnewrelic.environment=${NEWRELIC_ENV} \
+                -Dnewrelic.config.license_key=${NRA_LICENCE} \
+                -Dnewrelic.config.app_name=${NRA_APP} \
+                -javaagent:/opt/newrelic/newrelic.jar -jar app.jar<th:block th:fragment="sidebar" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+            <div class="sidebar-brand-text mx-3">Rock Scissors Paper</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="/">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Gameplay
+        </div>
+
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="/game-room">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Game Room</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/round">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Game Round</span></a>
+        </li>
+    </ul>
+</th:block>
