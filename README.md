@@ -28,7 +28,6 @@
    password2: admin2
    ```
 2. Go to http://localhost:8080/login
-* After Login you may be redirected to /.js files(known bug only on macos system)
 3. Player 1 should create Game Room http://localhost:8080/game-room
 4. Player 1 should join Game Room and pass Invite code to Player 2
 5. Player 2 should join Game Room using Invite code provided by Player http://localhost:8080/round
