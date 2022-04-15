@@ -5,12 +5,15 @@
 1. Ensure that you have installed and running Docker and Docker-compose
    * Install Docker [Docker](https://www.docker.com/products/docker-desktop)
    * Install Docker-compose  [docker-compose](https://docs.docker.com/compose/install/)
-
-2. Run command (from the root folder). It will start docker container
+2. Run mvn package to build project(from the root folder)
+   ```
+   mvn package
+   ```
+3. Run command (from the root folder). It will start docker container
    ```
    docker-compose up
    ```
-3. Now you can go to http://localhost:8080 and access application
+4. Now you can go to http://localhost:8080 and access application
 
 ## Playing against computer is fun, but it is more fun to play with people :)
 1. Create an account (for Player 1 and Player 2)
